@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import data from "./data";
 
 const App = () => {
   return (
@@ -21,7 +22,27 @@ const App = () => {
         </Navbar>
       </header>
 
-      <main>List Product</main>
+      <main>
+        <h1 className='text-center'>Featured Product</h1>
+        <div className='products'>
+          {data.products.map((product) => (
+            <div className='product' key={product.slug}>
+              <a href={`/product/${product.slug}`}>
+                <img src={product.image} alt={product.name} />
+              </a>
+              <div className='product-info'>
+                <a href={`/product/${product.slug}`}>
+                  <p>{product.name}</p>
+                </a>
+                <p>
+                  <strong>${product.price}</strong>
+                </p>
+                <button>Add To Cart</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
     </div>
   );
 };
