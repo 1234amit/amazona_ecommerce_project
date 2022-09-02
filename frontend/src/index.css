@@ -27,3 +27,12 @@ body {
 .right-nav {
   margin-left: auto;
 }
+
+.cart_btn {
+  border: none;
+  padding: 10px;
+  background: #2e4053;
+  color: white;
+  border-radius: 5px;
+  font-weight: 700;
+}
