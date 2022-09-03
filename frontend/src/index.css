@@ -22,6 +22,14 @@ main {
   margin: 1.5rem;
 }
 
+.rating span {
+  color: #ffc000;
+}
+
+.reviews-count {
+  color: #2e4053;
+}
+
 .product img {
   width: 100%;
   max-width: 400px;
