@@ -9,7 +9,7 @@ import ProductScreen from "./Screens/ProductScreen";
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div className='d-flex flex-column site-container'>
         <header>
           <Navbar bg='dark' variant='dark' expand='lg'>
             <Container>
@@ -35,11 +35,19 @@ const App = () => {
         </header>
 
         <main>
-          <Routes>
-            <Route path='/' element={<HomeScreen />} />
-            <Route path='/product/:slug' element={<ProductScreen />} />
-          </Routes>
+          <Container>
+            <Routes>
+              <Route path='/' element={<HomeScreen />} />
+              <Route path='/product/:slug' element={<ProductScreen />} />
+            </Routes>
+          </Container>
         </main>
+
+        <footer>
+          <div className='text-center'>
+            © 2022 Amit Goswami All Rights Reserved
+          </div>
+        </footer>
       </div>
     </BrowserRouter>
   );
