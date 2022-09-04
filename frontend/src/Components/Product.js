@@ -19,7 +19,8 @@ const Product = (props) => {
           <Rating rating={product.rating} numReviews={product.numReviews} />
 
           <p>
-            <strong>${product.price}</strong>
+            Price:
+            <strong> ${product.price}</strong>
           </p>
           <button variant='dark' className='cart_btn'>
             Add To Cart
