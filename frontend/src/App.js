@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Badge } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
+import { Store } from "./Store";
 
 const App = () => {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <BrowserRouter>
       <div className='d-flex flex-column site-container'>
@@ -22,6 +27,11 @@ const App = () => {
                   <Nav.Link as={NavLink} to='/cart'>
                     <i className='fas fa-shopping-cart'></i>
                     Cart
+                    {cart.cartItems.length > 0 && (
+                      <Badge pill bg='danger'>
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      </Badge>
+                    )}
                   </Nav.Link>
 
                   <Nav.Link as={NavLink} to='/login'>
