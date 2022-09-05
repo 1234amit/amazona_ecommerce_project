@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import logger from "use-reducer-logger";
-import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Product from "../Components/Product";
+import LoadingBox from "../Components/LoadingBox";
+import MessageBox from "../Components/MessageBox";
 // import data from "../data";
 
 const reducer = (state, action) => {
@@ -51,11 +52,9 @@ const HomeScreen = () => {
       <h1 className='text-center'>Featured Product</h1>
       <div className='products'>
         {loading ? (
-          <div>
-            <Spinner animation='border' variant='primary' />
-          </div>
+          <LoadingBox />
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox variant='danger'>{error}</MessageBox>
         ) : (
           <Row>
             {products.map((product) => (

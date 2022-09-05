@@ -1,13 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Spinner from "react-bootstrap/esm/Spinner";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Rating from "../Components/Rating";
 import Card from "react-bootstrap/Card";
 import { Badge, Button } from "react-bootstrap";
+import LoadingBox from "../Components/LoadingBox";
+import MessageBox from "../Components/MessageBox";
+import { getError } from "../utils";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -42,18 +44,16 @@ const ProductScreen = () => {
         const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
     fetchData();
   }, [slug]);
 
   return loading ? (
-    <div>
-      <Spinner animation='border' variant='primary' />
-    </div>
+    <LoadingBox />
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox variant='danger'>{error}</MessageBox>
   ) : (
     <div>
       <Row>
