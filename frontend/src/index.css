@@ -57,3 +57,8 @@ main {
 .image-large {
   max-width: 100%;
 }
+
+/* cart screen page style */
+.image-thumbnail {
+  height: 80px;
+}
