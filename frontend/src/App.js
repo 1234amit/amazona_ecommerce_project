@@ -7,7 +7,9 @@ import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import CartScreen from "./Screens/CartScreen";
 import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
+import SignInScreen from "./Screens/SignInScreen";
 import { Store } from "./Store";
+import "./App.css";
 
 const App = () => {
   const { state } = useContext(Store);
@@ -35,7 +37,7 @@ const App = () => {
                     )}
                   </Nav.Link>
 
-                  <Nav.Link as={NavLink} to='/login'>
+                  <Nav.Link as={NavLink} to='/signin'>
                     <i className='fas fa-sign-in-alt'></i>
                     Login
                   </Nav.Link>
@@ -51,6 +53,7 @@ const App = () => {
               <Route path='/' element={<HomeScreen />} />
               <Route path='/product/:slug' element={<ProductScreen />} />
               <Route path='/cart' element={<CartScreen />} />
+              <Route path='/signin' element={<SignInScreen />} />
             </Routes>
           </Container>
         </main>
